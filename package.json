@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "dependencies": {
       "vexflow": "^4.2.3",
-      "jsdom": "^22.1.0"
+      "jsdom": "^22.1.0",
+      "canvas": "^2.11.2"
     }
   }
