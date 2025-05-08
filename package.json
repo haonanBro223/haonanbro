@@ -1,0 +1,7 @@
+{
+    "name": "vexflow-stave",
+    "version": "1.0.0",
+    "dependencies": {
+      "vexflow": "^4.2.3"
+    }
+  }
