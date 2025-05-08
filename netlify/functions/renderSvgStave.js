@@ -3,9 +3,15 @@ const { Flow } = require('vexflow');
 // Netlify Function entry point must export `handler`
 exports.handler = async (event, context) => {
   try {
-    // Parse the incoming request body, Netlify passes body as a JSON string
-    const body = typeof event.body === 'string' ? JSON.parse(event.body) : event.body;
-    const note = (body.note || '').toLowerCase();
+    // —— 新增：同时支持 GET 和 POST ——  
+    let note = '';
+    if (event.httpMethod === 'POST') {
+      const body = event.body ? JSON.parse(event.body) : {};
+      note = (body.note || '').toLowerCase();
+    } else {
+      const qs = event.queryStringParameters || {};
+      note = (qs.note || '').toLowerCase();
+    }
     const VF = Flow;
 
     // Create SVG renderer (no DOM required)
